@@ -1,0 +1,47 @@
+
+<div class="bar bar-header bar-calm">
+  <h1 class="title">Sign Up State</h1>
+
+</div>
+<ion-view view-title="Sign Up">
+  <ion-content>
+    <br/><br/>
+    <div class="list">
+      <label class="item item-input">
+        <input type="text" placeholder="First Name" ng-model="cont.obj.firstName">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Last Name" ng-model="cont.obj.lastName">
+      </label>
+
+
+      <label class="item item-input">
+        <input type="email" placeholder="Email Address" ng-model="cont.obj.email">
+      </label>
+
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Blood Group
+        </div>
+        <select ng-model="cont.obj.blood">
+          <option>A Positive</option>
+          <option selected>O Positive</option>
+          <option>B Positive</option>
+          <option>AB Positive</option>
+        </select>
+      </label>
+
+      <label class="item item-input">
+        <input type="password" placeholder="Password" ng-model="cont.obj.password">
+      </label>
+
+    </div>
+
+
+    <button  class="button button-positive button-full" ng-click="cont.signUp(cont.obj)">
+      Sign Up
+        </button>
+
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,258 @@
+<ion-view view-title="Home">
+  <ion-content>
+
+    <button class="button button-clear button-positive" ng-click="blood = !blood">
+     Create post
+    </button>
+
+    <div class="card" ng-show="blood">
+      <div  style="text-align: center;background-color: #0ac3f0;padding: 9px;">
+        <h3>Post blood requirement.</h3>
+      </div>
+      <div class="list">
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Blood Group
+          </div>
+          <select ng-model="HM.d.bloodGroup">
+            <option>A Positive</option>
+            <option>B Positive</option>
+            <option>AB Positive</option>
+            <option>O Positive</option>
+          </select>
+        </label>
+
+        <label class="item item-input">
+          <input type="number" placeholder=" No. Of Unit Required:" ng-model="HM.d.unit">
+        </label>
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Urgency
+          </div>
+          <select ng-model="HM.d.urgency" ng-required="required">
+            <option>Within 1 Day</option>
+            <option>Within 2 Days</option>
+            <option>Within 3 Days</option>
+          </select>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Country
+          </div>
+          <select ng-model="HM.d.country" ng-required="required">
+            <option>Pakistan</option>
+            <option>India</option>
+            <option>London</option>
+            <option>Dubai</option>
+            <option>America</option>
+            <option>Turkey</option>
+          </select>
+        </label>
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            City
+          </div>
+          <select ng-model="HM.d.city" ng-required="required">
+            <option>Karachi</option>
+            <option>Lahore</option>
+            <option>Kolkata</option>
+            <option>Mumbai</option>
+            <option>Hyderabad</option>
+            <option>Delhi</option>
+            <option>Westminster</option>
+            <option>Bromley</option>
+            <option>Camden</option>
+          </select>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Hospital
+          </div>
+          <select ng-model="HM.d.hospital" ng-required="required">
+            <option>National Hospital</option>
+            <option>Abbasi Shaheed Hospital</option>
+            <option>Aga Khan, K.R.H</option>
+            <option>Civil Hospital (Casualties)</option>
+            <option>Mental Hospital</option>
+            <option>Doctors Hospital</option>
+            <option>Jinnah Hospital</option>
+            <option>AIIMS Jodhpur</option>
+            <option>AIIMS Patna</option>
+            <option>Artemis Hospital</option>
+            <option>Moolchand Hospital</option>
+            <option>Barnet General Hospital</option>
+            <option>Chase Farm Hospital</option>
+            <option>Highlands Hospital</option>
+            <option>Wellington Hospital</option>
+          </select>
+        </label>
+
+        <label class="item item-input">
+          <input type="text" placeholder="Your relation with patient" ng-model="HM.d.patient" ng-required="required">
+        </label>
+
+        <label class="item item-input">
+          <input type="number" placeholder="Contact Number" ng-model="HM.d.number" ng-required="required">
+        </label>
+
+        <label class="item item-input">
+          <textarea placeholder="Additional instructions" ng-model="HM.d.text">Write Something...!</textarea>
+        </label>
+      </div>
+      <button class="button button-dark button-full" ng-click="HM.saved(HM.d)">
+       Post
+      </button>
+    </div>
+
+<!--<div ng-repeat="cmt in HM.datas"><h2>COMMENTS: {{cmt}}</h2></div>-->
+
+    <div ng-repeat="bp in HM.bloodPost">
+      <div class="card" ng-click="mani = !mani ">
+        <div class="list">
+          <div class="item item-divider" style="text-align: center">
+            Feed
+          </div>
+          <div class="item item-divider">
+            <p class="item"> {{bp.firstName}}.</p>
+
+            <p class="item"> {{bp.unit}} units of {{bp.bloodGroup}} blood required.</p>
+
+            <p class="item"> At {{bp.hospital}} Hospital for my {{bp.patient}}.</p>
+
+            <p class="item"> Urgency {{bp.urgency}}.</p>
+
+            <p class="item"> Contact No : {{bp.number}}.</p>
+
+            <p class="item"> Additional instruction: {{bp.text}}.</p>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="card" ng-show="mani">
+
+        <div  style="text-align: center;background-color: #0ac3f0;padding: 5px;">
+          <h3>Post Details.</h3>
+        </div>
+
+        <div class="item item-text-wrap" id="style">
+          <p class="item">{{bp.firstName}}* </p>
+
+          <p class="item">{{bp.unit}} units of {{bp.bloodGroup}} blood required:</p>
+
+          <p class="item">Donation received : ____== </p>
+
+          <p class="item">Still required : ____== </p>
+
+          <p class="item"> Blood group: {{bp.bloodGroup}}</p>
+
+          <p class="item">Location: {{bp.country}} {{bp.city}} </p>
+
+          <p class="item">Hospital: {{bp.hospital}} Hospital</p>
+
+          <p class="item">Urgency : {{bp.urgency}}</p>
+
+          <p class="item">Relation with patient {{bp.patient}}</p>
+
+          <p class="item">Contact no: {{bp.number}}</p>
+
+          <p class="item">Additional instruction: {{bp.text}}</p>
+        </div>
+
+
+          <div class="item item-divider">         <!--========for volunteer========-->
+            <h2>Volunteer</h2>
+
+            <div class="item item-text-wrap">
+              <h4>Majid</h4>
+            </div>
+            <div class="item item-text-wrap">
+              <h4>Majid</h4>
+            </div>
+          </div>
+
+          <div class="item item-divider">        <!--========for Comment======-->
+            <h2>Comment</h2>
+
+            <div class="item item-text-wrap" ng-repeat="c in bp.commnets">
+
+              <!--<h2>L:{{c.comment}}</h2>-->
+              <h4> <a href="">{{c.commenterName}}</a>   {{c.comment}}</h4>
+            </div>
+          </div>
+
+
+        <div class="item item-input-inset">
+          <label class="item-input-wrapper">
+            <input type="text" placeholder="Comment" ng-model="HM.obj.comment">
+          </label>
+          <button class="button button-small button-balanced" ng-click="HM.addComment(bp.$id)">
+            Submit
+          </button>
+        </div>
+
+
+
+      </div>
+    </div>
+
+
+
+    <!--<div class="card" ng-show="show" style="width: 30% ; margin-left: 25%;text-align: center">-->
+      <!--<div class="item item-text-wrap">-->
+        <!--<div class="item item-text-wrap">-->
+          <!--Details-->
+        <!--</div>-->
+        <!--<p> This is a basic Card which contains an item that has wrapping text.</p>-->
+
+        <!--<p> This is a basic Card which contains an item that has wrapping text.</p>-->
+
+        <!--<p> This is a basic Card which contains an item that has wrapping text.</p>-->
+
+        <!--<p> This is a basic Card which contains an item that has wrapping text.</p>-->
+
+        <!--<p> This is a basic Card which contains an item that has wrapping text.</p>-->
+
+        <!--<p> This is a basic Card which contains an item that has wrapping text.</p>-->
+      <!--</div>-->
+      <!--<hr/>-->
+      <!--<div class="item item-divider">-->
+        <!--<h2>Volunteer</h2>-->
+
+        <!--<div class="item item-text-wrap">-->
+          <!--<h4>Majid</h4>-->
+        <!--</div>-->
+        <!--<div class="item item-text-wrap">-->
+          <!--<h4>Majid</h4>-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <!--<hr/>-->
+      <!--<hr/>-->
+      <!--<div class="item item-divider">-->
+        <!--<h2>Comments</h2>-->
+
+        <!--<div class="item item-text-wrap">-->
+          <!--<h4>Majid</h4>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<label class="item item-input">-->
+        <!--<input type="text" placeholder="First Name">-->
+      <!--</label>-->
+    <!--</div>-->
+  </ion-content>
+</ion-view>
+
+<style>
+  #style > p {
+    font-weight: bold;
+    font-size: 19px;
+    /*background-color: red;*/
+  }
+  h3{
+    color: white;
+  }
+</style>
