@@ -111,24 +111,27 @@
 
     <div ng-repeat="bp in HM.bloodPost">
       <div class="card" ng-click="mani = !mani ">
-        <div class="list">
+        <div class="item item-divider">
           <div class="item item-divider" style="text-align: center">
             Feed
           </div>
-          <div class="item item-divider">
-            <p class="item"> {{bp.firstName}}.</p>
-
-            <p class="item"> {{bp.unit}} units of {{bp.bloodGroup}} blood required.</p>
-
-            <p class="item"> At {{bp.hospital}} Hospital for my {{bp.patient}}.</p>
-
-            <p class="item"> Urgency {{bp.urgency}}.</p>
-
-            <p class="item"> Contact No : {{bp.number}}.</p>
-
-            <p class="item"> Additional instruction: {{bp.text}}.</p>
-
+          <div class="item item-text-wrap">
+            <p class="item item-divider"> {{bp.firstName}}.</p>
+            <p class="item item-divider"> {{bp.unit}} units of {{bp.bloodGroup}} blood required.</p>
+            <p class="item item-divider"> At {{bp.hospital}}  for my {{bp.patient}}.</p>
+            <p class="item item-divider"> Urgency {{bp.urgency}}.</p>
+            <p class="item item-divider"> Contact No : {{bp.number}}.</p>
+            <p class="item item-divider"> Additional instruction: {{bp.text}}.</p>
+            <p class="item item-divider"> Volunteer uptill now. {{bp.volunteers.length}}</p>
+            <p class="item item-divider"> Current requirements: {{bp.unit}}.</p>
+            <button class="button button-calm" ng-disabled="HM.postObj[bp.$id]" ng-click="HM.addVolunteer(bp.$id)">
+              Volunteer
+            </button>
+            <button class="button button-calm" style="float: right" ng-disabled="true">
+              Comments
+            </button>
           </div>
+
         </div>
       </div>
 
@@ -139,27 +142,28 @@
         </div>
 
         <div class="item item-text-wrap" id="style">
-          <p class="item">{{bp.firstName}}* </p>
-
-          <p class="item">{{bp.unit}} units of {{bp.bloodGroup}} blood required:</p>
-
-          <p class="item">Donation received : ____== </p>
-
-          <p class="item">Still required : ____== </p>
-
-          <p class="item"> Blood group: {{bp.bloodGroup}}</p>
-
-          <p class="item">Location: {{bp.country}} {{bp.city}} </p>
-
-          <p class="item">Hospital: {{bp.hospital}} Hospital</p>
-
-          <p class="item">Urgency : {{bp.urgency}}</p>
-
-          <p class="item">Relation with patient {{bp.patient}}</p>
-
-          <p class="item">Contact no: {{bp.number}}</p>
-
-          <p class="item">Additional instruction: {{bp.text}}</p>
+          <p class="item item-divider">{{bp.firstName}}* </p>
+          <br/>
+          <p class="item item-divider">{{bp.unit}} units of {{bp.bloodGroup}} blood required:</p>
+          <br/>
+          <p class="item item-divider">Donation received : ____== </p>
+          <br/>
+          <p class="item item-divider">Still required : ____== </p>
+          <br/>
+          <p class="item item-divider"> Blood group: {{bp.bloodGroup}}</p>
+          <br/>
+          <p class="item item-divider">Location: {{bp.country}} {{bp.city}} </p>
+          <br/>
+          <p class="item item-divider">Hospital: {{bp.hospital}} Hospital</p>
+          <br/>
+          <p class="item item-divider">Urgency : {{bp.urgency}}</p>
+          <br/>
+          <p class="item item-divider">Relation with patient {{bp.patient}}</p>
+          <br/>
+          <p class="item item-divider">Contact no: {{bp.number}}</p>
+          <br/>
+          <p class="item item-divider">Additional instruction:</p>
+          <span class="item item-divider">{{bp.text}}</span>
         </div>
 
 
@@ -248,9 +252,13 @@
 
 <style>
   #style > p {
-    font-weight: bold;
-    font-size: 19px;
+    /*font-weight: bold;*/
+    font-family:'Lucida Bright', Georgia, serif;
+    /*font-size: 19px;*/
     /*background-color: red;*/
+  }
+  #style > span{
+    font-family: cursive;
   }
   h3{
     color: white;

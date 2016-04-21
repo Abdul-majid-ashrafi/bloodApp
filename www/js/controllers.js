@@ -36,14 +36,19 @@ angular.module('starter')
   vm.signUp = function(obj){
     ser.saveData(obj);
   }})
+
+
 /*=============Home pages================*/
 
-.controller('HomeController',function(ser,$firebaseArray){
-  var ref = new Firebase("https://myduaapp.firebaseio.com");
-  var vm = this;
-    // get signUp/login data for home
+.controller('HomeController',function(ser,$firebaseArray,$firebaseObject){
 
+  var ref = new Firebase("https://myduaapp.firebaseio.com/");
+  var vm = this;
+   //vm.postObj = {};
+
+     // get signUp/login data for home
     vm.getToken = localStorage.getItem("saveToken");
+
   ser.catchData(vm.getToken).then(function(getData){
     //console.log("Arsalan:",getData.firstName);
     vm.showData = getData;
@@ -61,18 +66,46 @@ angular.module('starter')
     /*add comment  with  UserName*/
     vm.obj = {commenterName : vm.showData.firstName +' '+vm.showData.lastName};
     vm.addComment = function(PostId) {
-      ser.add_Comment(PostId, vm.obj)}
-
-
+      ser.add_Comment(PostId, vm.obj)};
   });
 
 
+/*================add volunteers with user and post id and get ===============*/
+    vm.addVolunteer = function(PostId) {
+   
+    var isPostPresent = false;
+    ref.child('post_volunteers').once('value',function(snapshot){
+      isPostPresent = snapshot.child(PostId).exists();
+
+      if(!isPostPresent) {
+        ref.child('post-volunteers').child(PostId).child(vm.getToken).set(true,function(response){
+          //console.log("First",response);
+        });
+        ref.child('volunteered').child(vm.getToken).child(PostId).set(true,function(response){
+          //console.log("second",response);
+        })
+
+      } })
+  };
+
+  vm.postObj = {};
+  var userPosts = $firebaseObject(ref.child('volunteered/'+vm.getToken)).$loaded(function(response){
+    console.log( response);
+    response.forEach(function(value,name){
+      //console.log(value+":"+name);
+      vm.postObj[name] = value;
+    });
+    console.log(vm.postObj);
+  });
+/*=====================================================================================*/
 
   /*get bloood post*/
   vm.bloodPost = $firebaseArray(ref.child('blood_Store'));
   vm.bloodPost.$loaded().then(function(){
     //console.log("GEt DaTA:",vm.bloodPost[0].$id);
-  });
+    });
+
+
 
 
 //vm.getComment = ser.comment;
