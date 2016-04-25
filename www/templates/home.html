@@ -5,6 +5,8 @@
      Create post
     </button>
 
+
+
     <div class="card" ng-show="blood">
       <div  style="text-align: center;background-color: #0ac3f0;padding: 9px;">
         <h3>Post blood requirement.</h3>
@@ -107,7 +109,6 @@
       </button>
     </div>
 
-<!--<div ng-repeat="cmt in HM.datas"><h2>COMMENTS: {{cmt}}</h2></div>-->
 
     <div ng-repeat="bp in HM.bloodPost">
       <div class="card" ng-click="mani = !mani ">
@@ -122,7 +123,7 @@
             <p class="item item-divider"> Urgency {{bp.urgency}}.</p>
             <p class="item item-divider"> Contact No : {{bp.number}}.</p>
             <p class="item item-divider"> Additional instruction: {{bp.text}}.</p>
-            <p class="item item-divider"> Volunteer uptill now. {{bp.volunteers.length}}</p>
+            <p class="item item-divider"> Volunteer uptill now. {{bp.count}}</p>
             <p class="item item-divider"> Current requirements: {{bp.unit}}.</p>
             <button class="button button-calm" ng-disabled="HM.postObj[bp.$id]" ng-click="HM.addVolunteer(bp.$id)">
               Volunteer
@@ -132,24 +133,25 @@
             </button>
           </div>
 
+
         </div>
       </div>
 
       <div class="card" ng-show="mani">
-
         <div  style="text-align: center;background-color: #0ac3f0;padding: 5px;">
           <h3>Post Details.</h3>
         </div>
 
         <div class="item item-text-wrap" id="style">
-          <p class="item item-divider">{{bp.firstName}}* </p>
+          
+          <p class="item item-divider">{{bp.firstName}} </p>
           <br/>
           <p class="item item-divider">{{bp.unit}} units of {{bp.bloodGroup}} blood required:</p>
           <br/>
-          <p class="item item-divider">Donation received : ____== </p>
-          <br/>
-          <p class="item item-divider">Still required : ____== </p>
-          <br/>
+          <!--<p class="item item-divider">Donation received : ____== </p>-->
+          <!--<br/>-->
+          <!--<p class="item item-divider">Still required : ____== </p>-->
+          <!--<br/>-->
           <p class="item item-divider"> Blood group: {{bp.bloodGroup}}</p>
           <br/>
           <p class="item item-divider">Location: {{bp.country}} {{bp.city}} </p>
@@ -169,21 +171,16 @@
 
           <div class="item item-divider">         <!--========for volunteer========-->
             <h2>Volunteer</h2>
-
-            <div class="item item-text-wrap">
-              <h4>Majid</h4>
+            <div class="item item-text-wrap" ng-repeat="v in bp.volunteers">
+             <a href="">{{v.firstName}} {{v.lastName}}</a> <br/>   {{v.blood}} <br/> 
+             <span style="font-size:13px">{{v.bloodStatus}}</span>
             </div>
-            <div class="item item-text-wrap">
-              <h4>Majid</h4>
-            </div>
+        
           </div>
 
           <div class="item item-divider">        <!--========for Comment======-->
             <h2>Comment</h2>
-
             <div class="item item-text-wrap" ng-repeat="c in bp.commnets">
-
-              <!--<h2>L:{{c.comment}}</h2>-->
               <h4> <a href="">{{c.commenterName}}</a>   {{c.comment}}</h4>
             </div>
           </div>
