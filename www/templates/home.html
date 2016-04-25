@@ -1,4 +1,5 @@
-<ion-view view-title="Home">
+<ion-view view-title="Home" >
+  
   <ion-content>
 
     <button class="button button-clear button-positive" ng-click="blood = !blood">
@@ -8,7 +9,7 @@
 
 
     <div class="card" ng-show="blood">
-      <div  style="text-align: center;background-color: #0ac3f0;padding: 9px;">
+      <div  style="text-align: center;background-color: 	#A00000 ;padding: 9px;">
         <h3>Post blood requirement.</h3>
       </div>
       <div class="list">
@@ -111,9 +112,13 @@
 
 
     <div ng-repeat="bp in HM.bloodPost">
-      <div class="card" ng-click="mani = !mani ">
+      <div class="card" ng-click="mani = !mani " style="text-shadow: 1px 0px #E00000 ">
         <div class="item item-divider">
-          <div class="item item-divider" style="text-align: center">
+          <div class="item item-divider" style="text-align: center;"> 
+               <img src="https://cdn.evbuc.com/images/2138581/68889684663/1/logo.png" alt="" ng-click="blood = !blood" height="30px" style="float:left">
+              <!--<img src="https://cdn.evbuc.com/images/2138581/68889684663/1/logo.png" alt="" ng-click="blood = !blood" height="30px" style="float:right">-->
+
+
             Feed
           </div>
           <div class="item item-text-wrap">
@@ -138,10 +143,11 @@
       </div>
 
       <div class="card" ng-show="mani">
-        <div  style="text-align: center;background-color: #0ac3f0;padding: 5px;">
-          <h3>Post Details.</h3>
-        </div>
-
+ <div class="item item-divider" style="text-align: center ;text-shadow: 1px 0px #E00000 "> 
+                  <img src="https://cdn.evbuc.com/images/2138581/68889684663/1/logo.png" alt="" ng-click="blood = !blood" height="30px" style="float:left">
+              <img src="https://cdn.evbuc.com/images/2138581/68889684663/1/logo.png" alt="" ng-click="blood = !blood" height="30px" style="float:right">
+            POST DETAILS.
+          </div>
         <div class="item item-text-wrap" id="style">
           
           <p class="item item-divider">{{bp.firstName}} </p>
@@ -156,7 +162,7 @@
           <br/>
           <p class="item item-divider">Location: {{bp.country}} {{bp.city}} </p>
           <br/>
-          <p class="item item-divider">Hospital: {{bp.hospital}} Hospital</p>
+          <p class="item item-divider">Hospital: {{bp.hospital}} </p>
           <br/>
           <p class="item item-divider">Urgency : {{bp.urgency}}</p>
           <br/>
@@ -165,14 +171,14 @@
           <p class="item item-divider">Contact no: {{bp.number}}</p>
           <br/>
           <p class="item item-divider">Additional instruction:</p>
-          <span class="item item-divider">{{bp.text}}</span>
+          <span class="item item-divider" style="border: solid 1px 	#A00000;text-align: center">{{bp.text}}</span>
         </div>
 
 
           <div class="item item-divider">         <!--========for volunteer========-->
             <h2>Volunteer</h2>
-            <div class="item item-text-wrap" ng-repeat="v in bp.volunteers">
-             <a href="">{{v.firstName}} {{v.lastName}}</a> <br/>   {{v.blood}} <br/> 
+            <div class="item item-text-wrap" ng-repeat="v in bp.volunteers" style="border: solid 1px 	#A00000">
+             <a href="" >{{v.firstName}} {{v.lastName}}</a> <br/>   {{v.blood}} <br/> 
              <span style="font-size:13px">{{v.bloodStatus}}</span>
             </div>
         
@@ -180,7 +186,7 @@
 
           <div class="item item-divider">        <!--========for Comment======-->
             <h2>Comment</h2>
-            <div class="item item-text-wrap" ng-repeat="c in bp.commnets">
+            <div class="item item-text-wrap" ng-repeat="c in bp.commnets" style="border: solid 1px 	#A00000">
               <h4> <a href="">{{c.commenterName}}</a>   {{c.comment}}</h4>
             </div>
           </div>
@@ -201,58 +207,18 @@
     </div>
 
 
-
-    <!--<div class="card" ng-show="show" style="width: 30% ; margin-left: 25%;text-align: center">-->
-      <!--<div class="item item-text-wrap">-->
-        <!--<div class="item item-text-wrap">-->
-          <!--Details-->
-        <!--</div>-->
-        <!--<p> This is a basic Card which contains an item that has wrapping text.</p>-->
-
-        <!--<p> This is a basic Card which contains an item that has wrapping text.</p>-->
-
-        <!--<p> This is a basic Card which contains an item that has wrapping text.</p>-->
-
-        <!--<p> This is a basic Card which contains an item that has wrapping text.</p>-->
-
-        <!--<p> This is a basic Card which contains an item that has wrapping text.</p>-->
-
-        <!--<p> This is a basic Card which contains an item that has wrapping text.</p>-->
-      <!--</div>-->
-      <!--<hr/>-->
-      <!--<div class="item item-divider">-->
-        <!--<h2>Volunteer</h2>-->
-
-        <!--<div class="item item-text-wrap">-->
-          <!--<h4>Majid</h4>-->
-        <!--</div>-->
-        <!--<div class="item item-text-wrap">-->
-          <!--<h4>Majid</h4>-->
-        <!--</div>-->
-      <!--</div>-->
-
-      <!--<hr/>-->
-      <!--<hr/>-->
-      <!--<div class="item item-divider">-->
-        <!--<h2>Comments</h2>-->
-
-        <!--<div class="item item-text-wrap">-->
-          <!--<h4>Majid</h4>-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<label class="item item-input">-->
-        <!--<input type="text" placeholder="First Name">-->
-      <!--</label>-->
-    <!--</div>-->
+   </div>
   </ion-content>
 </ion-view>
 
 <style>
+
   #style > p {
     /*font-weight: bold;*/
     font-family:'Lucida Bright', Georgia, serif;
+    border: solid 1px 	#A00000 ;
     /*font-size: 19px;*/
-    /*background-color: red;*/
+    /*background-color: 	#A00000 ;*/
   }
   #style > span{
     font-family: cursive;

@@ -39,12 +39,10 @@ angular.module('starter')
       return defferd.promise
     };
 
-    /*=======================================add for blood post===============================================*/
+    /*=======================================add blood post===============================================*/
 
-    vm.dataForm = $firebaseArray(ref.child('blood_Store'));
-    vm.dataForm.$loaded().then(function () {
-      //console.log(vm.dataForm)
-    });
+    vm.dataForm = $firebaseArray(ref.child('blood_Store')); 
+  
 
 
 
